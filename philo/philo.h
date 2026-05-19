@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 17:50:03 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/05 21:16:44 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/20 00:24:08 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,6 @@ int			ph_clean(t_table *sim, t_philo ***philos, int err_cd, int exit_cd);
 int			ph_philo_alloc(t_table *sim, t_philo **ph, int guide);
 int			ph_sim_end(t_table *sim, pthread_t **thr, int thr_n, int exit_cd);
 void		ph_action_report(t_philo *p, char *action);
+void		ph_thinkering(t_philo *philo, bool print_action);
+void        ph_meditate(t_philo *philo);
 #endif

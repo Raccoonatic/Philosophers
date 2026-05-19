@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 20:58:05 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/05 21:07:14 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/20 00:24:11 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,16 @@ int	ph_pickup_l_r(t_philo *philo)
 	pthread_mutex_lock(&philo->table->ded);
 	if (philo->table->omg_she_ded == true)
 	{
-		pthread_mutex_unlock(philo->right_fork);
-		return (pthread_mutex_unlock(philo->left_fork), 1);
+		pthread_mutex_unlock(philo->left_fork);
+		return (pthread_mutex_unlock(philo->right_fork), 1);
 	}
 	pthread_mutex_unlock(&philo->table->ded);
 	ph_update_meal_data(philo);
-	ph_usleep(philo->table->tte);
-	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 	ph_action_report(philo, "is sleeping");
 	ph_usleep(philo->table->tts);
-	ph_action_report(philo, "is thinking");
+	ph_thinkering(philo, true);
 	return (0);
 }
 
@@ -56,17 +55,16 @@ int	ph_pickup_r_l(t_philo *philo)
 	pthread_mutex_lock(&philo->table->ded);
 	if (philo->table->omg_she_ded == true)
 	{
-		pthread_mutex_unlock(philo->left_fork);
-		return (pthread_mutex_unlock(philo->right_fork), 1);
+		pthread_mutex_unlock(philo->right_fork);
+		return (pthread_mutex_unlock(philo->left_fork), 1);
 	}
 	pthread_mutex_unlock(&philo->table->ded);
 	ph_update_meal_data(philo);
-	ph_usleep(philo->table->tte);
-	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
+	pthread_mutex_unlock(philo->left_fork);
 	ph_action_report(philo, "is sleeping");
 	ph_usleep(philo->table->tts);
-	ph_action_report(philo, "is thinking");
+	ph_thinkering(philo, true);
 	return (0);
 }
 
@@ -75,8 +73,9 @@ static void	ph_update_meal_data(t_philo *philo)
 	pthread_mutex_lock(&philo->meal_lock);
 	philo->last_meal = ph_getnow();
 	(philo->meal_count)++;
-	pthread_mutex_unlock(&philo->meal_lock);
 	ph_action_report(philo, "is eating");
+	pthread_mutex_unlock(&philo->meal_lock);
+	ph_usleep(philo->table->tte);
 	return ;
 }
 
@@ -89,8 +88,9 @@ int	ph_dedcheck(t_philo *philo)
 		return (1);
 	}
 	pthread_mutex_unlock(&philo->table->ded);
-	if (philo->ordr == EVN)
-		ph_usleep(100);
+	ph_meditate(philo);
+//	if (philo->ordr == EVN)
+//		ph_usleep(philo->table->tte / 2);
 	return (0);
 }
 
@@ -103,7 +103,7 @@ void	ph_lastmealinit(t_table *sim, t_philo **ph)
 	{
 		ph[guide]->last_meal = sim->start;
 		guide++;
-		printf("%lld %d is thinking\n", ph_getnow() - sim->start, guide);
+//		printf("%lld %d is thinking\n", ph_getnow() - sim->start, guide);
 	}
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:51 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/05 21:06:07 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/19 23:25:28 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	*ph_routine(void *arg)
 	while (philo->table->omg_she_ded == false)
 	{
 		pthread_mutex_unlock(&philo->table->ded);
-		if (philo->ordr == EVN)
+		if (philo->ordr == ODD)
 		{
 			if (ph_pickup_l_r(philo))
 				break ;
@@ -95,16 +95,18 @@ static void	*ph_monitor(void *arg)
 
 static void	ph_philoop(t_table *t, t_philo **ph, int *full)
 {
-	int	i;
+	int			i;
+	long long	now;
 
 	i = 0;
 	*full = 0;
+	now = ph_getnow();
 	while (ph[i])
 	{
 		pthread_mutex_lock(&ph[i]->meal_lock);
 		if (t->turns != -1 && ph[i]->meal_count >= t->turns)
 			(*full)++;
-		if (ph_getnow() - ph[i]->last_meal > t->ttd)
+		if ((now - ph[i]->last_meal) > t->ttd)
 		{
 			pthread_mutex_unlock(&ph[i]->meal_lock);
 			pthread_mutex_lock(&t->print);

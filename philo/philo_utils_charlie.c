@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:23:07 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/05 21:12:46 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/20 00:25:27 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int		ph_philo_alloc(t_table *sim, t_philo **ph, int guide);
 int		ph_sim_end(t_table *sim, pthread_t **thr, int thr_n, int exit_cd);
 void	ph_action_report(t_philo *p, char *action);
+void	ph_thinkering(t_philo *philo, bool print_action);
+void	ph_meditate(t_philo *philo);
 
 int	ph_philo_alloc(t_table *sim, t_philo **ph, int guide)
 {
@@ -75,4 +77,56 @@ void	ph_action_report(t_philo *p, char *action)
 	pthread_mutex_unlock(&p->table->ded);
 	pthread_mutex_unlock(&p->table->print);
 	return ;
+}
+
+void	ph_meditate(t_philo *philo)
+{
+	if (philo->table->n % 2 == 0)
+	{
+		if (philo->ordr == EVN)
+			ph_usleep(30);
+	}
+	else
+	{
+		if (philo->ordr == ODD)
+			ph_thinkering(philo, false);
+	}
+	return ;
+}
+
+void	ph_thinkering(t_philo *philo, bool print_action)
+{
+//	long long	tt_think;
+//	long long	tt_die;
+
+	long long	tte;
+	long long	tts;
+	long long	ttt;
+
+	if (print_action)
+		ph_action_report(philo, "is thinking");
+	if (philo->table->n % 2 == 0)
+		return ;
+	tte = philo->table->tte;
+	tts = philo->table->tts;
+	ttt = tte * 2 - tts;
+	if (ttt < 0)
+		ttt = 0;
+	ph_usleep(ttt * 0.42);
+	return ;
+/*	if (philo->table->n % 2)
+	{
+		tt_die = philo->table->ttd;
+		tt_think = (tt_die - (philo->table->tts + philo->table->tte)) / 2;
+		if (tt_think < 0)
+			tt_think = 0;
+		if (philo->ordr == ODD)
+			ph_usleep(tt_think / 2);
+	}
+	else
+	{
+		if (philo->ordr == ODD)
+			ph_usleep(30);
+	}
+	return ;*/
 }

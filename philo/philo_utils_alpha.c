@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 21:41:48 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/05 21:09:44 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/20 00:24:27 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,14 @@ static int	check_limits(char next_digit, int sign, long long *n);
 
 void	ph_usleep(long sleep)
 {
-	long long	start;
-	long long	passed;
+	long long	stop;
 
-	start = ph_getnow();
-	while (1)
+	stop = ph_getnow() + sleep;
+	while (ph_getnow() < stop)
 	{
-		passed = ph_getnow() - start;
-		if (passed >= sleep)
-			break ;
-		if (sleep - passed > 1)
-			usleep(500);
-		else
+		if ((stop - ph_getnow()) < 30)
 			continue ;
+		usleep(500);
 	}
 	return ;
 }
