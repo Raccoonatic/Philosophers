@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:51 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/19 23:25:28 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/21 00:42:15 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ static void	*ph_routine(void *arg)
 	pthread_mutex_unlock(&philo->table->ded);
 	if (ph_dedcheck(philo))
 		return (NULL);
-	pthread_mutex_lock(&philo->table->ded);
-	while (philo->table->omg_she_ded == false)
+	pthread_mutex_lock(&philo->thrive_lock);
+	while (philo->thriving == true)
 	{
-		pthread_mutex_unlock(&philo->table->ded);
+		pthread_mutex_unlock(&philo->thrive_lock);
 		if (philo->ordr == ODD)
 		{
 			if (ph_pickup_l_r(philo))
@@ -65,9 +65,9 @@ static void	*ph_routine(void *arg)
 		else
 			if (ph_pickup_r_l(philo))
 				break ;
-		pthread_mutex_lock(&philo->table->ded);
+		pthread_mutex_lock(&philo->thrive_lock);
 	}
-	pthread_mutex_unlock(&philo->table->ded);
+	pthread_mutex_unlock(&philo->thrive_lock);
 	return (NULL);
 }
 
@@ -88,7 +88,10 @@ static void	*ph_monitor(void *arg)
 		pthread_mutex_lock(&table->ded);
 	}
 	if (full == table->n)
+	{
 		table->omg_she_ded = true;
+		ph_be_serious_someone_died(table->philos);
+	}
 	pthread_mutex_unlock(&table->ded);
 	return (NULL);
 }
@@ -112,6 +115,7 @@ static void	ph_philoop(t_table *t, t_philo **ph, int *full)
 			t->omg_she_ded = true;
 			printf("%lld %d %s\n", ph_getnow() - t->start, ph[i]->id, "died");
 			pthread_mutex_unlock(&t->ded);
+			ph_be_serious_someone_died(ph);
 			pthread_mutex_unlock(&t->print);
 			return ;
 		}

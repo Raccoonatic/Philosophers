@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 23:31:02 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/20 21:36:00 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/21 00:12:45 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int	ph_clean(t_table *sim, t_philo ***philos, int err_cd, int exit_cd)
 			if ((*philos)[guide])
 			{
 				pthread_mutex_destroy(&(*philos)[guide]->meal_lock);
+				pthread_mutex_destroy(&(*philos)[guide]->thrive_lock);
 				free((*philos)[guide]);
 			}
 			guide++;

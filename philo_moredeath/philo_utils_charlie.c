@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:23:07 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/20 21:49:05 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/21 00:37:10 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ int	ph_philo_alloc(t_table *sim, t_philo **ph, int guide)
 		*ph = NULL;
 		return (1);
 	}
-	if (pthread_mutex_init(&(*ph)->meal_lock, NULL))
-	{
-		free(*ph);
-		*ph = NULL;
+	if (ph_safe_mtx_init(ph, &(*ph)->meal_lock))
 		return (1);
-	}
+	if (ph_safe_mtx_init(ph, &(*ph)->thrive_lock))
+		return (pthread_mutex_destroy(&(*ph)->thrive_lock), 1);
+	(*ph)->thriving = true;
 	(*ph)->id = guide + 1;
 	(*ph)->meal_count = 0;
 	(*ph)->last_meal = 0;
@@ -81,7 +80,7 @@ void	ph_action_report(t_philo *p, char *action)
 
 void	ph_meditate(t_philo *philo)
 {
-	if (philo->table->n % 2 == 0)
+	if (philo->table->n % 2 == 0 || philo->table->n == 1)
 	{
 		if (philo->ordr == EVN)
 			ph_usleep(30);

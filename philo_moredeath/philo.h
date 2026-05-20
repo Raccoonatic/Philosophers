@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 17:50:03 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/20 21:33:31 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/21 00:11:15 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ struct s_philo
 	int				id;
 	long			meal_count;
 	long long		last_meal;
+	bool			thriving;
+	pthread_mutex_t	thrive_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
@@ -99,4 +101,6 @@ void		ph_meditate(t_philo *philo);
 
 //   -- -- #    philo_utils_delta.c
 int			ph_chilltime(t_philo *philo);
+void		ph_be_serious_someone_died(t_philo **ph);
+int			ph_safe_mtx_init(t_philo **ph, pthread_mutex_t *lock);
 #endif
