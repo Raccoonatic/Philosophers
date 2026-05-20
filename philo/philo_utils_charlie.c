@@ -96,37 +96,15 @@ void	ph_meditate(t_philo *philo)
 
 void	ph_thinkering(t_philo *philo, bool print_action)
 {
-//	long long	tt_think;
-//	long long	tt_die;
-
-	long long	tte;
-	long long	tts;
-	long long	ttt;
+	long long	tt_think;
 
 	if (print_action)
 		ph_action_report(philo, "is thinking");
 	if (philo->table->n % 2 == 0)
 		return ;
-	tte = philo->table->tte;
-	tts = philo->table->tts;
-	ttt = tte * 2 - tts;
-	if (ttt < 0)
-		ttt = 0;
-	ph_usleep(ttt * 0.42);
+	tt_think = philo->table->tte * 2 - philo->table->tts;
+	if (tt_think < 0)
+		tt_think = 0;
+	ph_usleep(tt_think / 2);
 	return ;
-/*	if (philo->table->n % 2)
-	{
-		tt_die = philo->table->ttd;
-		tt_think = (tt_die - (philo->table->tts + philo->table->tte)) / 2;
-		if (tt_think < 0)
-			tt_think = 0;
-		if (philo->ordr == ODD)
-			ph_usleep(tt_think / 2);
-	}
-	else
-	{
-		if (philo->ordr == ODD)
-			ph_usleep(30);
-	}
-	return ;*/
 }

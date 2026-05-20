@@ -95,5 +95,5 @@ int			ph_philo_alloc(t_table *sim, t_philo **ph, int guide);
 int			ph_sim_end(t_table *sim, pthread_t **thr, int thr_n, int exit_cd);
 void		ph_action_report(t_philo *p, char *action);
 void		ph_thinkering(t_philo *philo, bool print_action);
-void        ph_meditate(t_philo *philo);
+void		ph_meditate(t_philo *philo);
 #endif

@@ -96,17 +96,15 @@ static void	*ph_monitor(void *arg)
 static void	ph_philoop(t_table *t, t_philo **ph, int *full)
 {
 	int			i;
-	long long	now;
 
 	i = 0;
 	*full = 0;
-	now = ph_getnow();
 	while (ph[i])
 	{
 		pthread_mutex_lock(&ph[i]->meal_lock);
 		if (t->turns != -1 && ph[i]->meal_count >= t->turns)
 			(*full)++;
-		if ((now - ph[i]->last_meal) > t->ttd)
+		if ((ph_getnow() - ph[i]->last_meal) > t->ttd)
 		{
 			pthread_mutex_unlock(&ph[i]->meal_lock);
 			pthread_mutex_lock(&t->print);

@@ -89,8 +89,6 @@ int	ph_dedcheck(t_philo *philo)
 	}
 	pthread_mutex_unlock(&philo->table->ded);
 	ph_meditate(philo);
-//	if (philo->ordr == EVN)
-//		ph_usleep(philo->table->tte / 2);
 	return (0);
 }
 
@@ -103,7 +101,6 @@ void	ph_lastmealinit(t_table *sim, t_philo **ph)
 	{
 		ph[guide]->last_meal = sim->start;
 		guide++;
-//		printf("%lld %d is thinking\n", ph_getnow() - sim->start, guide);
 	}
 	return ;
 }
