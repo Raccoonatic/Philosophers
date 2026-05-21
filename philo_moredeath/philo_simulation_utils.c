@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 20:58:05 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/21 00:34:39 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/21 01:22:16 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ static void	ph_update_meal_data(t_philo *philo)
 	pthread_mutex_unlock(&philo->meal_lock);
 	pthread_mutex_lock(&philo->thrive_lock);
 	if (philo->thriving == false)
+	{
+		pthread_mutex_unlock(&philo->thrive_lock);
 		return ;
+	}
 	pthread_mutex_unlock(&philo->thrive_lock);
 	ph_usleep(philo->table->tte);
 	return ;
