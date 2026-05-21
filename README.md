@@ -11,7 +11,7 @@
 problem, built for the 42 School curriculum. The primary objective of this 
 project is to understand the fundamentals of multithreading, concurrent 
 programming, and resource sharing. By managing threads representing philosophers
-and mutexes representing forks, the project aims to create a deep understanding of 
+and mutexes representing forks, the project helps create a deeper understanding of 
 system synchronization and the Linux kernel's CPU scheduler.
 
 Developed entirely in C, the simulation features precise timekeeping down to the
