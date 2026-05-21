@@ -122,8 +122,9 @@ make re
 <br>Focus Boost<br>
 * [Background Noise](https://www.youtube.com/watch?v=kN-iEJ3Sbsc&list=PLcL9r1K3TSwpOVyQKP1MruSuY-NS99iQY)
 * [Foreground Noise](https://open.spotify.com/playlist/5O5q1xG6hNt7NDA8tmT2KJ?si=c9f448d17bba40dc)<br>
-<br>
+
 ---
+
 ## 🧾 Final Notes 🦝💜
 
 If you made it this far…
