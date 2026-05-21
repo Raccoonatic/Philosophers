@@ -64,7 +64,7 @@ During that time, they will need to hold two forks.
 > 
 > **_time_to_sleep_**: The time in milliseconds a philosopher will spend sleeping.
 > 
-> **_number_of_times_each_philosopher_must_eat_**: If all philosophers have eaten at least number_of_times_each_philosopher_must_eat
+> **_number_of_meals_**: If all philosophers have eaten at least number_of_meals
 times, the simulation stops. If not specified, the simulation stops when a philosopher dies. _(optional argument)_
 > 
 <br>
