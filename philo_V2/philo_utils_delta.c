@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 21:18:59 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/21 00:01:35 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/21 12:50:29 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		ph_chilltime(t_philo *philo);
 void	ph_be_serious_someone_died(t_philo **ph);
 int		ph_safe_mtx_init(t_philo **ph, pthread_mutex_t *lock);
-
 
 int	ph_chilltime(t_philo *philo)
 {

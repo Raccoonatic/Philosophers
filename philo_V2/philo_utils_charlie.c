@@ -6,7 +6,7 @@
 /*   By: lde-san- <lde-san-@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:23:07 by lde-san-          #+#    #+#             */
-/*   Updated: 2026/05/21 00:37:10 by lde-san-         ###   ########.fr       */
+/*   Updated: 2026/05/21 13:03:41 by lde-san-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,13 @@ int	ph_sim_end(t_table *sim, pthread_t **thr, int thr_n, int exit_cd)
 
 void	ph_action_report(t_philo *p, char *action)
 {
+	long long	now;
+
+	now = ph_getnow();
 	pthread_mutex_lock(&p->table->print);
 	pthread_mutex_lock(&p->table->ded);
 	if (p->table->omg_she_ded == false)
-		printf("%lld %d %s\n", ph_getnow() - p->table->start, p->id, action);
+		printf("%lld %d %s\n", now - p->table->start, p->id, action);
 	pthread_mutex_unlock(&p->table->ded);
 	pthread_mutex_unlock(&p->table->print);
 	return ;
