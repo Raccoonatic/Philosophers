@@ -1,7 +1,7 @@
-_This project has been created as part of the 42 curriculum by lde-san-._
+<h1 align="center"><em>This project has been created as part of the 42 curriculum by lde-san-._</em></h1>
 
 <h1 align="center">🦝🗿 Philosophers 🗿🦝</h1>
-<p align="center"><b>_Hopefully distinct from the last supper_</b></p>
+<p align="center"><b><em>Hopefully distinct from the last supper</em></b></p>
 
 ---
 
