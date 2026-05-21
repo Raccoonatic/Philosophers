@@ -11,12 +11,12 @@
 problem, built for the 42 School curriculum. The primary objective of this 
 project is to understand the fundamentals of multithreading, concurrent 
 programming, and resource sharing. By managing threads representing philosophers
-and mutexes representing forks, the project demands a deep understanding of 
+and mutexes representing forks, the project aims to create a deep understanding of 
 system synchronization and the Linux kernel's CPU scheduler.
 
 Developed entirely in C, the simulation features precise timekeeping down to the
 millisecond, strict thread state management, and the absolute prevention of data
-races, deadlocks, and CPU hoarding.
+races and deadlocks.
 
 ### 🧠 *Core Architecture & Concepts:*
 - Multithreading:
@@ -35,7 +35,7 @@ races, deadlocks, and CPU hoarding.
 AI was used as a **supporting tool**, mainly for:
 
  - 📘 General documentation lookup *(e.g. POSIX thread behavior, Function's definitions and usage, Assigning meaning to previously unknown terminology)*
- - 🔍 Code reviewing / catching subtle mistakes, critisizing and insanity prevention.
+ - 🔍 Code reviewing / catching subtle mistakes, critisizing, and insanity prevention.
  - 💣 Preventing unnecessary compile attempts *(a.k.a. “yes, you forgot a semicolon again”)*
 
 ## 🛠️ Instructions
@@ -78,12 +78,12 @@ times, the simulation stops. If not specified, the simulation stops when a philo
 
 ## 🦝 Other Makefile Utilities
 
-• The **leaks** rule in the provided Makefile, will run the program using valgrind to check for memory leaks.<br>
+• The **leaks** rule in the provided Makefile, will run the program using _valgrind_ to check for memory leaks.<br>
 ```
 make leaks ARGS="number_of_philos time_to_die time_to_eat time_to_sleep [number_of_meals]"
 ```
 
-• The **races** rule in the provided Makefile, will run the program using valgrind --tool=helgrind to check for data races.<br>
+• The **races** rule in the provided Makefile, will run the program using _valgrind --tool=helgrind_ to check for data races.<br>
 ```
 make races ARGS="number_of_philos time_to_die time_to_eat time_to_sleep [number_of_meals]"
 ```
@@ -111,15 +111,15 @@ make re
 
 ## 📚 Resources
 
-<br>Understanding the Project<br>
+<br>Understanding the Project:<br>
 * [Information on threads and how to use them [CodeVault]](https://www.youtube.com/watch?v=d9s_d28yJq0&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2)
 * [Example implementation [SuspectedOceano]](https://www.youtube.com/watch?v=zOpzGHwJ3MU)
 * [Tips and general project concept [Jamshidbek Ergashev]](https://www.youtube.com/watch?v=UGQsvVKwe90)<br>
 
-<br>Testing<br>
+<br>Testing:<br>
 * [Simulation Visualizer](https://nafuka11.github.io/philosophers-visualizer/)<br>
 
-<br>Focus Boost<br>
+<br>Focus Boost:<br>
 * [Background Noise](https://www.youtube.com/watch?v=kN-iEJ3Sbsc&list=PLcL9r1K3TSwpOVyQKP1MruSuY-NS99iQY)
 * [Foreground Noise](https://open.spotify.com/playlist/5O5q1xG6hNt7NDA8tmT2KJ?si=c9f448d17bba40dc)<br>
 
