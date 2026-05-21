@@ -18,15 +18,15 @@ Developed entirely in C, the simulation features precise timekeeping down to the
 millisecond, strict thread state management, and the absolute prevention of data
 races, deadlocks, and CPU hoarding.
 
-### 🧠 *Core Architecture & Concepts:**
+### 🧠 *Core Architecture & Concepts:*
 - Multithreading:
 > Creating, managing, and joining concurrent execution threads using the pthread library.
 - Synchronization:
-> Utilizing mutex locks to safely manage shared resources (forks, meal timestamps, and death flags) across dozens of parallel threads.
+> Utilizing mutex locks to safely manage shared resources (forks, meal timestamps, and death flags) across multiple of parallel threads.
 - Time Management: 
 > Bridging millisecond arithmetic and microsecond system calls using gettimeofday and highly optimized, proportional usleep wrappers to prevent Philosopher (thread) starvation and deadlocks.
 - Concurrency Control:
->Architecting asynchronous monitor threads and state machines to seamlessly detect deaths, avoid self-deadlocks.
+> Architecting asynchronous monitor threads and state machines to seamlessly detect deaths, avoid self-deadlocks.
 
 ---
 
@@ -54,14 +54,19 @@ make
 
 > **_number_of_philosophers_**: The number of philosophers and also the number
 of forks.
+> 
 > **_time_to_die_**: If a philosopher has not started eating within
 time_to_die milliseconds since the start of their last meal or the start of the
 simulation, they die.
+> 
 > **_time_to_eat_**: The time in milliseconds it takes for a philosopher to eat.
 During that time, they will need to hold two forks.
+> 
 > **_time_to_sleep_**: The time in milliseconds a philosopher will spend sleeping.
+> 
 > **_number_of_times_each_philosopher_must_eat_**: If all philosophers have eaten at least number_of_times_each_philosopher_must_eat
 times, the simulation stops. If not specified, the simulation stops when a philosopher dies. _(optional argument)_
+> 
 <br>
 
 ```
