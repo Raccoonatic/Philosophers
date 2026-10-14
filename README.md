@@ -1,5 +1,7 @@
 <p align="center"><i>This project has been created as part of the 42 curriculum by lde-san-</i></p>
 
+<h3 align="center"><img src=".assets/README_img/Philosophers.jpeg" alt="Banner"></h3>
+
 <h1 align="center">🦝🗿 Philosophers 🗿🦝</h1>
 <p align="center"><b><em>Hopefully distinct from the last supper.</em></b></p>
 
@@ -7,11 +9,11 @@
 
 ## 🎯 Description
 
-**Philosophers** is a custom C implementation of the classic _Dining Philosophers_ 
-problem, built for the 42 School curriculum. The primary objective of this 
-project is to understand the fundamentals of multithreading, concurrent 
+**Philosophers** is a custom C implementation of the classic _Dining Philosophers_
+problem, built for the 42 School curriculum. The primary objective of this
+project is to understand the fundamentals of multithreading, concurrent
 programming, and resource sharing. By managing threads representing philosophers
-and mutexes representing forks, the project helps create a deeper understanding of 
+and mutexes representing forks, the project helps create a deeper understanding of
 system synchronization and the Linux kernel's CPU scheduler.
 
 Developed entirely in C, the simulation features precise timekeeping down to the
@@ -23,7 +25,7 @@ races and deadlocks.
 > Creating, managing, and joining concurrent execution threads using the pthread library.
 - Synchronization:
 > Utilizing mutex locks to safely manage shared resources (forks, meal timestamps, and death flags) across multiple of parallel threads.
-- Time Management: 
+- Time Management:
 > Bridging millisecond arithmetic and microsecond system calls using gettimeofday and highly optimized, proportional usleep wrappers to prevent Philosopher (thread) starvation and deadlocks.
 - Concurrency Control:
 > Architecting asynchronous monitor threads and state machines to seamlessly detect deaths, avoid self-deadlocks.
@@ -54,19 +56,19 @@ make
 
 > **_number_of_philosophers_**: The number of philosophers and also the number
 of forks.
-> 
+>
 > **_time_to_die_**: If a philosopher has not started eating within
 time_to_die milliseconds since the start of their last meal or the start of the
 simulation, they die.
-> 
+>
 > **_time_to_eat_**: The time in milliseconds it takes for a philosopher to eat.
 During that time, they will need to hold two forks.
-> 
+>
 > **_time_to_sleep_**: The time in milliseconds a philosopher will spend sleeping.
-> 
+>
 > **_number_of_meals_**: If all philosophers have eaten at least number_of_meals
 times, the simulation stops. If not specified, the simulation stops when a philosopher dies. _(optional argument)_
-> 
+>
 <br>
 
 ```
